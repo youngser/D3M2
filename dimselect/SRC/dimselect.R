@@ -1,4 +1,5 @@
-source("/home/user/D3M/dimselect/SRC/getElbows.R")
+source("dimselect.interface.R")
+
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args)==0) {
     stop("At least one argument must be supplied (input file, a numeric vector.\n", call.=FALSE)
@@ -6,10 +7,4 @@ if (length(args)==0) {
     input <- args[1]
 }
 
-cat("working with ", input, "\n")
-X <- scan(input)
-out <- getElbows(X)
-cat("The first three selected dimensions are = ", out, "\n")
-
-cat("The output file is saved in './DATA/out.txt'.\n")
-write(out,"/home/user/D3M/DATA/out.txt", ncol=1)
+dimselect.interface(input)
