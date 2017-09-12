@@ -40,3 +40,10 @@ out.txt
 eigenvalues.txt
 out_vectors.txt
 in_vectors.txt
+
+# Hidden files
+.*
+
+# Compiled units
+*.pyc
+
