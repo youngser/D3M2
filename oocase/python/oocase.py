@@ -26,7 +26,7 @@ def oocase(datafn, dim=2):
         "default).\n".format(datafn, dim))
 
     _oocase = robjects.r("""
-    source("../SRC/oocase_interface.R")
+    source("../SRC/oocase.interface.R")
     fn <- function(input, dmax) {
         oocase.interface(input, dmax)
     }

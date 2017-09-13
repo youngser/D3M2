@@ -20,14 +20,14 @@ def dimselect(datafn):
     print("working with: {}".format(datafn))
 
     get_elbows = robjects.r("""
-    source("/home/user/D3M/dimselect/SRC/getElbows.R")
+    source("../SRC/getElbows.R")
     fn <- function (input) {
         X <- scan(input)
         out <- getElbows(X)
         cat("The first three selected dimensions are = ", out, "\n")
 
         cat("The output file is saved in './DATA/out.txt'.\n")
-        write(out,"/home/user/D3M/DATA/out.txt", ncol=1)
+        write(out,"../DATA/out.txt", ncol=1)
     }
     """)
 
