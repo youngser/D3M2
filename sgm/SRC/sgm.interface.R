@@ -9,19 +9,22 @@ if(!require(igraph)) {
 
 sgm.interface <- function(input1, input2, s)
 {
-    X <- as.matrix(read.table(input1))
-    if (ncol(X)==2) {
-        g1 <- graph.edgelist(X)
-    } else {
-        g1 <- graph.adjacency(X)
-    }
-    X <- as.matrix(read.table(input2))
-    if (ncol(X)==2) {
-        g2 <- graph.edgelist(X)
-    } else {
-        g2 <- graph.adjacency(X)
-    }
+    ## X <- as.matrix(read.table(input1))
+    ## if (ncol(X)==2) {
+    ##     g1 <- graph.edgelist(X)
+    ## } else {
+    ##     g1 <- graph.adjacency(X)
+    ## }
+    ## X <- as.matrix(read.table(input2))
+    ## if (ncol(X)==2) {
+    ##     g2 <- graph.edgelist(X)
+    ## } else {
+    ##     g2 <- graph.adjacency(X)
+    ## }
 
+    g1 <- read.graph(input1, "gml")
+    g2 <- read.graph(input2, "gml")
+    
     A1 <- as.matrix(g1[]); n <- nrow(A1)
     A2 <- as.matrix(g2[]); m <- nrow(A2)
 
