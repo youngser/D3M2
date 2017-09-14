@@ -1,8 +1,8 @@
-from Graph import Graph
+from JHUGraph import JHUGraph
 from util import gen_graph_r
 
 gen_graph_r() # path is always /tmp/graph.gml
-g = Graph()
+g = JHUGraph()
 g.read_graph("/tmp/graph.gml")
 g.summary()
 print("\nweighted: {}\n".format(g.is_weighted()))

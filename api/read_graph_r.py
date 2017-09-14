@@ -5,7 +5,7 @@
 
 import rpy2.robjects as robjects
 
-def read_gml(path):
+def read_graph(path, fmt):
     """
     Read a graph and secretly return an R igraph ... sshh
 
@@ -19,16 +19,16 @@ def read_gml(path):
     """
 
     reader = robjects.r("""
-    fn <- function(path) {
+    fn <- function(path, fmt) {
         if(!suppressMessages(require(igraph))) {
             install.packages("igraph")
         }
         suppressMessages(require(igraph))
-        read_graph(path, "gml")
+        read_graph(path, fmt)
     }
     """)
 
-    return reader(path)
+    return reader(path, fmt)
 
 def print_summary(g):
     """
@@ -50,7 +50,7 @@ def test():
     g.write_gml(gpath)
     print ("python graph says:\n {}\n".format(g.summary()))
 
-    rg = read_gml(gpath)
+    rg = read_graph(gpath, gml)
     print ("R graph says:\n"); print_summary(rg)
 
 # test() # not run
