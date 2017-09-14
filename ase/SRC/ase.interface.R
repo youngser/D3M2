@@ -1,6 +1,6 @@
 if(!require(igraph)){
     install.packages("igraph")
-    library(igraph)
+    suppressMessages(require(igraph))
 }
 
 ase.interface <- function(g, dim)
@@ -14,7 +14,7 @@ ase.interface <- function(g, dim)
     ##     rk <- rank(tmp) / nnz
     ##     X[X!=0] <- rk * 2 / nnz
 
-    ##     ## form igraph object: directed, weighted, hollow 
+    ##     ## form igraph object: directed, weighted, hollow
     ##     suppressMessages(require(igraph))
     ##     g <- graph_from_adjacency_matrix(X,weighted=TRUE,mode="directed",diag=FALSE)
     ## } else {
