@@ -11,11 +11,12 @@ from ig_wrapper_r import ig_get_num_edges
 from ig_wrapper_r import ig_get_dangling_nodes
 from ig_wrapper_r import ig_is_directed
 from ig_wrapper_r import ig_is_weighted
+from ig_wrapper_r import ig_summary
 
 import numpy as np
 
 class Graph(object):
-    adjacency_matrix = None # TODO: Make a dummy
+    adjacency_matrix = None
     _num_vertices = None
     _num_edges = None
     _directed = None
@@ -31,17 +32,16 @@ class Graph(object):
             self._object = read_gml(fname)
         else:
             raise NotImplementedError("Reading graphs of type '{}'".\
-                    format(dtype)
+                    format(dtype))
 
-        self._num_vertices = ig_get_num_vertices()
-        self._num_edges = ig_get_num_edges()
-        self._directed = ig_is_directed()
-        self._weighted = ig_is_weighted()
+        self._num_vertices = ig_get_num_vertices(self._object)
+        self._num_edges = ig_get_num_edges(self._object)
+        self._directed = ig_is_directed(self._object)
+        self._weighted = ig_is_weighted(self._object)
 
     @abc.abstractmethod
     def compute_statistics(self):
-        # TODO: Test
-        self._dangling_nodes = np.array(ig_get_dangling_nodes(self._object))
+        self._dangling_nodes = ig_get_dangling_nodes(self._object)
 
     @abc.abstractmethod
     def get_adjacency_matrix(self):
@@ -67,3 +67,7 @@ class Graph(object):
         if (self._dangling_nodes is None):
             self.compute_statistics()
         return self._dangling_nodes
+
+    def summary(self):
+        ig_summary(self._object)
+

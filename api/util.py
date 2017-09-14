@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-# test_util.py
+# util.py
 # Created on 2017-09-14.
 
 def gen_graph_r(n=10, p=.2):

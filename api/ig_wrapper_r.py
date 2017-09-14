@@ -5,7 +5,7 @@
 
 import rpy2.robjects as robjects
 import numpy as np
-from test_util import gen_graph_r
+from util import gen_graph_r
 
 def ig_get_adjacency_matrix(ig):
     fn = robjects.r("""
@@ -14,9 +14,10 @@ def ig_get_adjacency_matrix(ig):
         get.adjacency(ig)
     }
     """)
+    adj = fn(ig)
+    #import pdb; pdb.set_trace()
     return fn(ig)
 
-# TODO: Test
 def ig_get_num_vertices(ig):
     fn = robjects.r("""
     fn <- function(ig) {
@@ -24,9 +25,8 @@ def ig_get_num_vertices(ig):
         vcount(ig)
     }
     """)
-    return fn(ig)
+    return fn(ig)[0]
 
-# TODO: Test
 def ig_get_num_edges(ig):
     fn = robjects.r("""
     fn <- function(ig) {
@@ -34,9 +34,8 @@ def ig_get_num_edges(ig):
         ecount(ig)
     }
     """)
-    return fn(ig)
+    return fn(ig)[0]
 
-# TODO: Test
 def ig_get_dangling_nodes(ig):
     fn = robjects.r("""
     fn <- function(ig) {
@@ -44,9 +43,8 @@ def ig_get_dangling_nodes(ig):
         which(degree(ig) == 0)
     }
     """)
-    return fn(ig)
+    return np.array(fn(ig))
 
-# TODO: Test
 def ig_is_weighted(ig):
     fn = robjects.r("""
     fn <- function(ig) {
@@ -54,9 +52,8 @@ def ig_is_weighted(ig):
        is.weighted(ig)
     }
     """)
-    return fn(ig)
+    return bool(fn(ig)[0])
 
-# TODO: Test
 def ig_is_directed(ig):
     fn = robjects.r("""
     fn <- function(ig) {
@@ -64,7 +61,16 @@ def ig_is_directed(ig):
         is.directed(ig)
     }
     """)
-    return fn(ig)
+    return bool(fn(ig)[0])
+
+def ig_summary(ig):
+    fn = robjects.r("""
+    fn <- function(ig) {
+        suppressMessages(require(igraph))
+        summary(ig)
+    }
+    """)
+    fn(ig)
 
 def test_ig_get_adjacency_matrix():
     rg = gen_graph_r()
