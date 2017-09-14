@@ -7,7 +7,7 @@ if(!require(igraph)) {
     library(igraph)
 }
 
-vnsgm.interface <- function(g1, g2, s)
+vnsgm.interface <- function(g1, g2, voi, s)
 {
     ## X <- as.matrix(read.table(input1))
     ## if (ncol(X)==2) {
@@ -23,7 +23,6 @@ vnsgm.interface <- function(g1, g2, s)
     ## }
 
     W <- intersect(V(g1),V(g2)) # shared vertices
-    x <- sample(W,1)
     W <- setdiff(W,x) # exclude x from W
     maxseed <- min(length(W),s)
     S <- sort(sample(W,maxseed))
