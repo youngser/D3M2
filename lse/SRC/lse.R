@@ -12,5 +12,7 @@ if (length(args)==0) {
     dim <- args[2]
 }
 
-lse.interface(input, dim)
+cat("working with ", input, ", embedding into ", dim, "dimension (2 is default).\n")
+
+se.interface(input, dim)
 
