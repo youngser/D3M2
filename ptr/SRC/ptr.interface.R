@@ -8,12 +8,14 @@ if(!require(igraph)){
     library(igraph)
 }
 
-ptr.interface <- function(input)
+ptr.interface <- function(g)
 {
-    X <- as.matrix(read.table(input))
-    g <- ptr(X)
+#    X <- as.matrix(read.table(input))
+    g <- ptr(g)
     out <- as.matrix(g[])
 
-    cat("The output file, a new n x n adjacency matrix, is saved in '../DATA/out.txt'.\n")
-    write.table(out,"../DATA/out.txt", row.names=FALSE, col.names=FALSE)
+    return(out)
+    
+#    cat("The output file, a new n x n adjacency matrix, is saved in '../DATA/out.txt'.\n")
+#    write.table(out,"../DATA/out.txt", row.names=FALSE, col.names=FALSE)
 }

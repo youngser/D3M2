@@ -8,17 +8,18 @@ if(!require(igraph)){
     library(igraph)
 }
 
-sgc.interface <- function(input)
+sgc.interface <- function(g)
 {
-    X <- as.matrix(read.table(input))
-    if (ncol(X)==2) {
-        g <- graph.edgelist(X)
-    } else {
-        g <- graph.adjacency(X)
-    }
+    ## X <- as.matrix(read.table(input))
+    ## if (ncol(X)==2) {
+    ##     g <- graph.edgelist(X)
+    ## } else {
+    ##     g <- graph.adjacency(X)
+    ## }
     
     Yhat <- gmmase(g)$Y
-
-    cat("The output file, a vector of clustering labels, is saved in '../DATA/out.txt'.\n")
-    write(Yhat,"../DATA/out.txt", ncol=1)
+    return(Yhat)
+    
+    ## cat("The output file, a vector of clustering labels, is saved in '../DATA/out.txt'.\n")
+    ## write(Yhat,"../DATA/out.txt", ncol=1)
 }

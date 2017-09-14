@@ -12,4 +12,6 @@ if (length(args)==0) {
     dim <- args[2]
 }
 
+cat("working with ", input, ", embedding into ", dim, "dimension (2 is default).\n")
+
 ase.interface(input, dim)
