@@ -14,6 +14,7 @@ from ase.SRC.ase import ase
 from lse.SRC.lse import lse
 from ptr.SRC.ptr import ptr
 from dimselect.SRC.dimselect import dimselect
+from sgm.SRC.sgm import sgm
 
 class JHUTransform(Transform):
 
@@ -41,6 +42,12 @@ class JHUTransform(Transform):
         """
         return np.array(dimselect(X))
 
+    def sgm_transform(self, g1, g2, numseeds):
+        """
+        TODO: YP document
+        """
+        return np.array(sgm(g1, g2, numseeds))
+
 
 def test():
     gpath, rig = gen_graph_r(n=50, p=.1)
@@ -67,5 +74,13 @@ def test():
     # DIM
     DIM = t.dimselect_transform(g.get_adjacency_matrix())
     print "DIM: ", DIM, "\n\n"
+
+    # SGM
+    gpath, rig2 = gen_graph_r(n=50, p=.1)
+    g2 = JHUGraph()
+    g2.read_graph(gpath)
+
+    SGM = t.sgm_transform(g, g2, 3)
+    print "SGM: ", SGM, "\n\n"
 
 test()

@@ -1,10 +1,10 @@
 if(!require(VN)) {
     install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.0.tar.gz",type="source")
-    library(VN)
+    suppressMessages(library(VN))
 }
 if(!require(igraph)) {
     install.packages("igraph")
-    library(igraph)
+    suppressMessages(library(igraph))
 }
 
 sgm.interface <- function(g1, g2, s)
@@ -24,7 +24,7 @@ sgm.interface <- function(g1, g2, s)
 
 #    g1 <- read.graph(input1, "gml")
 #    g2 <- read.graph(input2, "gml")
-    
+
     A1 <- as.matrix(g1[]); n <- nrow(A1)
     A2 <- as.matrix(g2[]); m <- nrow(A2)
 
