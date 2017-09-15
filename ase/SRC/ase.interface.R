@@ -23,9 +23,9 @@ ase.interface <- function(g, dim)
 
 
     ## embedding into "dim"
-    embed <- embed_adjacency_matrix(g, dim)
+    X <- embed_adjacency_matrix(g, dim)$X
 
-    return(embed)
+    return(X)
 
     ## cat("The output files are saved in '../DATA/out_vectors.txt', '../DATA/in_vectors.txt', and '../DATA/eigenvalues'.\n")
     ## write.table(embed$X,"../DATA/out_vectors.txt", col.names=F, row.names=F)
