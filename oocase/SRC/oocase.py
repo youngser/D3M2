@@ -1,22 +1,21 @@
 #!/usr/bin/env python
 
-# ase.py
+# oocase.py
 # Created by Disa Mhembere on 2017-09-12.
 # Email: disa@jhu.edu
 # Copyright (c) 2017. All rights reserved.
 
-import rpy2.robjects as robjects
 import os
+import rpy2.robjects as robjects
 
-def ase(g, dim):
+def oocase(g, dim=2):
     """
-    Perform Adjacency Spectral Embedding on a graph
     TODO: YP description
 
     **Positional Arguments:**
 
     g:
-        - Graph in JHUGraph format
+        - A graph
 
     **Optional Arguments:**
 
@@ -25,11 +24,12 @@ def ase(g, dim):
     """
 
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
-            "ase.interface.R")
+            "oocase.interface.R")
+
     cmd = """
     source("%s")
     fn <- function(g, dim) {
-        ase.interface(g, dim)
+        oocase.interface(g, dmax)
     }
     """ % path
 
