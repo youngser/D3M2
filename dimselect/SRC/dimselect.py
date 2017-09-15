@@ -5,7 +5,7 @@
 # Email: disa@jhu.edu
 # Copyright (c) 2017. All rights reserved.
 
-import argparse
+import os
 import rpy2.robjects as robjects
 
 def dimselect(X):
@@ -23,10 +23,8 @@ def dimselect(X):
     cmd = """
     source("%s")
     fn <- function(X) {
-        dimselect.interface(datafn)
+        dimselect.interface(X)
     }
     """ % path
 
-    get_elbows = robjects.r(cmd)
-
-    get_elbows(X)
+    return robjects.r(cmd)(X)

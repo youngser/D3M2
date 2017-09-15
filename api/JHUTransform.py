@@ -13,6 +13,7 @@ sys.path.append(os.path.abspath("../"))
 from ase.SRC.ase import ase
 from lse.SRC.lse import lse
 from ptr.SRC.ptr import ptr
+from dimselect.SRC.dimselect import dimselect
 
 class JHUTransform(Transform):
 
@@ -34,9 +35,12 @@ class JHUTransform(Transform):
         """
         return np.array(ptr(g))
 
+    def dimselect_transform(self, X):
+        return np.array(dimselect(X))
+
 
 def test():
-    gpath, rig = gen_graph_r(n=100, p=.2)
+    gpath, rig = gen_graph_r(n=50, p=.1)
 
     g = JHUGraph()
     g.read_graph(gpath)
@@ -56,5 +60,9 @@ def test():
     # PTR
     PTR = t.ptr_transform(g)
     print "PTR: ", PTR, "\n\n"
+
+    # DIM
+    DIM = t.dimselect_transform(g.get_adjacency_matrix())
+    print "DIM: ", DIM, "\n\n"
 
 test()
