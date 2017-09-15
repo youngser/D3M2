@@ -36,6 +36,9 @@ class JHUTransform(Transform):
         return np.array(ptr(g))
 
     def dimselect_transform(self, X):
+        """
+        TODO: YP document
+        """
         return np.array(dimselect(X))
 
 
