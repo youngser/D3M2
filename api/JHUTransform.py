@@ -12,6 +12,7 @@ sys.path.append(os.path.abspath("../"))
 
 from ase.SRC.ase import ase
 from lse.SRC.lse import lse
+from ptr.SRC.ptr import ptr
 
 class JHUTransform(Transform):
 
@@ -27,6 +28,13 @@ class JHUTransform(Transform):
         """
         return np.array(ase(g, dim)[0]) # TODO: YP do we need more?
 
+    def ptr_transform(self, g):
+        """
+        TODO: YP document
+        """
+        return np.array(ptr(g))
+
+
 def test():
     gpath, rig = gen_graph_r(n=100, p=.2)
 
@@ -39,10 +47,14 @@ def test():
 
     # ASE
     ASE = t.ase_transform(g, 2)
-    print "ASE:", ASE, "\n\n"
+    print "ASE: ", ASE, "\n\n"
 
     # LSE
     LSE = t.lse_transform(g, 2)
-    print "LSE:", ASE, "\n\n"
+    print "LSE: ", ASE, "\n\n"
+
+    # PTR
+    PTR = t.ptr_transform(g)
+    print "PTR: ", PTR, "\n\n"
 
 test()

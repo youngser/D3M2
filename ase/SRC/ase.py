@@ -5,7 +5,6 @@
 # Email: disa@jhu.edu
 # Copyright (c) 2017. All rights reserved.
 
-import argparse
 import rpy2.robjects as robjects
 import os
 
