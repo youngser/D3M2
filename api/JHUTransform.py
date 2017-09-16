@@ -15,6 +15,8 @@ from lse.SRC.lse import lse
 from ptr.SRC.ptr import ptr
 from dimselect.SRC.dimselect import dimselect
 from sgm.SRC.sgm import sgm
+from gclust.SRC.gclust import gclust
+from oocase.SRC.oocase import oocase # FIXME: Expects a FlashGraph object
 
 class JHUTransform(Transform):
 
@@ -48,6 +50,18 @@ class JHUTransform(Transform):
         """
         return np.array(sgm(g1, g2, numseeds))
 
+    def gclust_transform(self, X, dim=2):
+        """
+        TODO: YP document
+        """
+        return gclust(X, dim)[0]
+
+    def oocase_transform(self, g, dim):
+        """
+        TODO: YP document
+        """
+        return oocase(g, dim)
+
 
 def test():
     gpath, rig = gen_graph_r(n=50, p=.1)
@@ -60,7 +74,7 @@ def test():
     t = JHUTransform()
 
     # ASE
-    ASE = t.ase_transform(g, 2)
+    ASE = t.ase_transform(g, 4)
     print "ASE: ", ASE, "\n\n"
 
     # LSE
@@ -82,5 +96,9 @@ def test():
 
     SGM = t.sgm_transform(g, g2, 3)
     print "SGM: ", SGM, "\n\n"
+
+    # GCLUST
+    GCLUST = t.gclust_transform(ASE, 2)
+    print "GCLUST: ", GCLUST, "\n\n"
 
 test()

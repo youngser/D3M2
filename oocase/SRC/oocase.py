@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
 # oocase.py
-# Created by Disa Mhembere on 2017-09-12.
-# Email: disa@jhu.edu
 # Copyright (c) 2017. All rights reserved.
 
 import os
