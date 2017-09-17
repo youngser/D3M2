@@ -75,7 +75,7 @@ def ig_summary(ig):
 def test_ig_get_adjacency_matrix():
     rg = gen_graph_r()
     r_adj_mat = ig_get_adjacency_matrix(rg)
-    print r_adj_mat
+    print(r_adj_mat)
 
 def test():
     test_ig_get_adjacency_matrix()

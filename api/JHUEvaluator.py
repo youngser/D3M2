@@ -22,7 +22,7 @@ class JHUEvaluator(Evaluator):
         true_labels:
             - The true known labels from your model
         """
-        if kwargs.has_key("predicted_labels") and kwargs.has_key("true_labels"):
+        if "predicted_labels" in kwargs and "true_labels" in kwargs:
             return 100*(adjusted_rand_score(kwargs["predicted_labels"],
                 kwargs["true_labels"]))
         else:
@@ -30,7 +30,7 @@ class JHUEvaluator(Evaluator):
 
 def test():
     ev = JHUEvaluator()
-    print "Ev: ", ev.get_accuracy(predicted_labels=[1,2,3,4,5],
-            true_labels=[5,4,3,2,1])
+    print("Ev: ", ev.get_accuracy(predicted_labels=[1,2,3,4,5],
+            true_labels=[5,4,3,2,1]))
 
 # test() # Not run

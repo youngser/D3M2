@@ -48,7 +48,7 @@ def test():
     g = igraph.Graph.Erdos_Renyi(50, .2)
     gpath = "/tmp/graph.gml"
     g.write_gml(gpath)
-    print ("python graph says:\n {}\n".format(g.summary()))
+    print(("python graph says:\n {}\n".format(g.summary())))
 
     rg = read_graph(gpath, gml)
     print ("R graph says:\n"); print_summary(rg)
