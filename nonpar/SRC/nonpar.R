@@ -15,4 +15,7 @@ if (length(args)<2) {
 
 cat("working with ", input1, " and ", input2, "\n")
 
-nonpar.interface(input1, input2, sigma)
+Xhat1 <- as.matrix(read.table(input1))
+Xhat2 <- as.matrix(read.table(input2))
+
+nonpar.interface(Xhat1, Xhat2, sigma)

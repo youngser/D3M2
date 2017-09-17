@@ -17,6 +17,7 @@ from dimselect.SRC.dimselect import dimselect
 from sgm.SRC.sgm import sgm
 from gclust.SRC.gclust import gclust
 from oocase.SRC.oocase import oocase # FIXME: Expects a FlashGraph object
+from nonpar.SRC.nonpar import nonpar
 
 class JHUTransform(Transform):
 
@@ -56,11 +57,18 @@ class JHUTransform(Transform):
         """
         return gclust(X, dim)[0]
 
-    def oocase_transform(self, g, dim):
+    def oocase_transform(self, g, dim=2):
         """
         TODO: YP document
         """
         return oocase(g, dim)
+
+    def nonpar_transform(self, mat1, mat2, sigma=.5):
+        """
+        TODO: YP document
+        """
+        #return np.array(sgm(mat1, mat2, sigma))
+        return nonpar(mat1, mat2, sigma)
 
 
 def test():
@@ -78,7 +86,7 @@ def test():
     print "ASE: ", ASE, "\n\n"
 
     # LSE
-    LSE = t.lse_transform(g, 2)
+    LSE = t.lse_transform(g, 4)
     print "LSE: ", ASE, "\n\n"
 
     # PTR
@@ -100,5 +108,9 @@ def test():
     # GCLUST
     GCLUST = t.gclust_transform(ASE, 2)
     print "GCLUST: ", GCLUST, "\n\n"
+
+    # NONPAR
+    # NONPAR = t.nonpar_transform(ASE[:3,:3], LSE[:3, :3])
+    # print "NONPAR: ", NONPAR, "\n\n"
 
 test()
