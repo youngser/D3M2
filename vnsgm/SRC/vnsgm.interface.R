@@ -23,7 +23,7 @@ vnsgm.interface <- function(g1, g2, voi, s)
     ## }
 
     W <- intersect(V(g1),V(g2)) # shared vertices
-    W <- setdiff(W,x) # exclude x from W
+    W <- setdiff(W,voi) # exclude x from W
     maxseed <- min(length(W),s)
     S <- sort(sample(W,maxseed))
 
