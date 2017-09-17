@@ -7,7 +7,7 @@ ase.interface <- function(g, dim)
 {
 
     ## embedding into "dim"
-    embed <- embed_adjacency_matrix(g, dim)
+    X <- embed_adjacency_matrix(g, dim)$X
 
-    return(embed)
+    return(X)
 }
