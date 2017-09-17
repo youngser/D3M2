@@ -18,6 +18,8 @@ from sgm.SRC.sgm import sgm
 from gclust.SRC.gclust import gclust
 from oocase.SRC.oocase import oocase # FIXME: Expects a FlashGraph object
 from nonpar.SRC.nonpar import nonpar
+from sgc.SRC.sgc import sgc
+from numclust.SRC.numclust import numclust
 
 class JHUTransform(Transform):
 
@@ -67,8 +69,19 @@ class JHUTransform(Transform):
         """
         TODO: YP document
         """
-        #return np.array(sgm(mat1, mat2, sigma))
         return nonpar(mat1, mat2, sigma)
+
+    def sgc_transform(self, g):
+        """
+        TODO: YP document
+        """
+        return np.array(sgc(g))
+
+    def numclust_transform(self, X):
+        """
+        TODO: YP document
+        """
+        return numclust(X)[0]
 
 
 def test():
@@ -113,4 +126,11 @@ def test():
     # NONPAR = t.nonpar_transform(ASE[:3,:3], LSE[:3, :3])
     # print "NONPAR: ", NONPAR, "\n\n"
 
+    # SGC
+    SGC = t.sgc_transform(g)
+    print "SGC: ", SGC, "\n\n"
+
+    # NUMCLUST
+    NUMCLUST = t.numclust_transform(SGC)
+    print "NUMCLUST: ", NUMCLUST, "\n\n"
 test()
