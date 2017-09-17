@@ -30,7 +30,7 @@ vnsgm.interface <- function(g1, g2, voi, s)
     R <- 100
     gamma <- 1
     h <- ell <- 1
-    out <- vnsgm(x,S,g1,g2,h,ell,R,gamma,sim=FALSE,plotF=FALSE)$P
+    out <- vnsgm(voi,S,g1,g2,h,ell,R,gamma,sim=FALSE,plotF=FALSE)$P
 
     return(out)
     
