@@ -1,11 +1,11 @@
 if(!require(gmmase)){
     require(devtools)
-    devtools::install_github("youngser/gmmase")
-    library(gmmase)
+    suppressMessages(devtools::install_github("youngser/gmmase"))
+    suppressMessages(library(gmmase))
 }
 if(!require(igraph)){
     install.packages("igraph")
-    library(igraph)
+    suppressMessages(library(igraph))
 }
 
 ptr.interface <- function(g)
@@ -15,7 +15,7 @@ ptr.interface <- function(g)
     out <- as.matrix(g[])
 
     return(out)
-    
+
 #    cat("The output file, a new n x n adjacency matrix, is saved in '../DATA/out.txt'.\n")
 #    write.table(out,"../DATA/out.txt", row.names=FALSE, col.names=FALSE)
 }

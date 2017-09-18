@@ -6,9 +6,10 @@ if (length(args)==0) {
 } else if (length(args)==2) {
     input <- args[1]
     K <- args[2]
-} 
+}
 
 cat("working with ", input, ", clustering up to ", K, " clusters...\n")
 
-gclust.interface(input, K)
+X <- as.matrix(read.table(input))
+gclust.interface(X, K)
 

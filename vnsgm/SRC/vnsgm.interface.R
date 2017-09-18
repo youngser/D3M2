@@ -1,10 +1,10 @@
-if(!require(VN)) {
+if(!suppressMessages(require(VN))) {
     install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.0.tar.gz",type="source")
-    library(VN)
+    suppressMessages(library(VN))
 }
 if(!require(igraph)) {
     install.packages("igraph")
-    library(igraph)
+    suppressMessages(library(igraph))
 }
 
 vnsgm.interface <- function(g1, g2, voi, s)
@@ -23,17 +23,17 @@ vnsgm.interface <- function(g1, g2, voi, s)
     ## }
 
     W <- intersect(V(g1),V(g2)) # shared vertices
-    W <- setdiff(W,x) # exclude x from W
+    W <- setdiff(W,voi) # exclude x from W
     maxseed <- min(length(W),s)
     S <- sort(sample(W,maxseed))
 
     R <- 100
     gamma <- 1
     h <- ell <- 1
-    out <- vnsgm(x,S,g1,g2,h,ell,R,gamma,sim=FALSE,plotF=FALSE)$P
+    out <- vnsgm(voi,S,g1,g2,h,ell,R,gamma,sim=FALSE,plotF=FALSE)$P
 
     return(out)
-    
+
 #    cat("The output file is saved in '../DATA/out.txt'.\n")
 #    write.table(out,"../DATA/out.txt", row.names=F, col.names=F)
 }

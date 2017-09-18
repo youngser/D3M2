@@ -5,8 +5,9 @@ if (length(args)<1) {
     stop("One argument must be supplied, which is a numeric vector containing clustering criteria, e.g., BIC or Average Silhouette numbers.\n", call.=FALSE)
 } else {
     input <- args[1]
-} 
+}
 
 cat("working with ", input, "\n")
 
-numclust.interface(input)
+X <- scan(input)
+numclust.interface(X)

@@ -1,11 +1,12 @@
-if(!require(igraph)){
+if(!require(igraph)) {
     install.packages("igraph")
-    suppressMessages(library(igraph))
+    library(igraph)
 }
 
-lse.interface <- function(g, dim)
+ase.interface <- function(g, dim)
 {
     ## X <- as.matrix(read.table(input))
+
     ## if (nrow(X) == ncol(X)) {
     ##     ## pass to rank
     ##     tmp <- X[X!=0]
@@ -13,15 +14,17 @@ lse.interface <- function(g, dim)
     ##     rk <- rank(tmp) / nnz
     ##     X[X!=0] <- rk * 2 / nnz
 
-    ##     ## form igraph object: directed, weighted, hollow
+    ##     ## form igraph object: directed, weighted, hollow 
     ##     suppressMessages(require(igraph))
     ##     g <- graph_from_adjacency_matrix(X,weighted=TRUE,mode="directed",diag=FALSE)
     ## } else {
     ##     stop("The input matrix must be a square matrix!")
     ## }
 
+
     ## embedding into "dim"
-    X <- embed_laplacian_matrix(g, dim)$X
+    X <- embed_adjacency_matrix(g, dim)$X
+<<<<<<< HEAD
 
     return(X)
 
@@ -29,4 +32,8 @@ lse.interface <- function(g, dim)
     ## write.table(embed$X,"../DATA/out_vectors.txt", col.names=F, row.names=F)
     ## write.table(embed$Y,"../DATA/in_vectors.txt", col.names=F, row.names=F)
     ## write(embed$D,"../DATA/eigenvalues.txt", ncol=1)
+=======
+
+    return(X)
+>>>>>>> 40aa4dedd77d5633fc9457adc8fa64bc33e9657a
 }
