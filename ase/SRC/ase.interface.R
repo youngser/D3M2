@@ -1,4 +1,4 @@
-if(!require(igraph)){
+if(!require(igraph)) {
     install.packages("igraph")
     library(igraph)
 }
