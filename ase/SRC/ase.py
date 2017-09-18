@@ -5,7 +5,6 @@
 # Email: disa@jhu.edu
 # Copyright (c) 2017. All rights reserved.
 
-import argparse
 import rpy2.robjects as robjects
 import os
 
@@ -34,5 +33,4 @@ def ase(g, dim):
     }
     """ % path
 
-    _ase = robjects.r(cmd)
-    return _ase(g._object, dim)
+    return robjects.r(cmd)(g._object, dim)

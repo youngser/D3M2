@@ -1,29 +1,29 @@
 #!/usr/bin/env python
 
-# dimselect.py
-# Created by Disa Mhembere on 2017-09-11.
-# Email: disa@jhu.edu
+# numclust.py
 # Copyright (c) 2017. All rights reserved.
 
 import os
 import rpy2.robjects as robjects
+import rpy2.robjects.numpy2ri
+rpy2.robjects.numpy2ri.activate()
 
-def dimselect(X):
+def numclust(X):
     """
     TODO: YP description
 
     **Positional Arguments:**
 
     X:
-        - Input data matrix TODO: YP format
+        - TODO: YP description
     """
 
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
-            "dimselect.interface.R")
+            "numclust.interface.R")
     cmd = """
     source("%s")
     fn <- function(X) {
-        dimselect.interface(X)
+        numclust.interface(X)
     }
     """ % path
 

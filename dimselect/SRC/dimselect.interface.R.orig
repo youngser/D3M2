@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+if(!require(gmmase)){
+    require(devtools)
+    devtools::install_github("youngser/gmmase")
+    library(gmmase)
+}
+=======
+source("http://www.cis.jhu.edu/~parky/D3M/getElbows.R")
+>>>>>>> 40aa4dedd77d5633fc9457adc8fa64bc33e9657a
+
+dimselect.interface <- function(X)
+{
+    out <- getElbows(X)
+}

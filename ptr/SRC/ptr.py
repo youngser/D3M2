@@ -1,30 +1,29 @@
 #!/usr/bin/env python
 
-# dimselect.py
-# Created by Disa Mhembere on 2017-09-11.
-# Email: disa@jhu.edu
+# ptr.py
+# Created by Disa Mhembere, Heather Patsolic on 2017-09-11.
 # Copyright (c) 2017. All rights reserved.
 
 import os
 import rpy2.robjects as robjects
 
-def dimselect(X):
+def ptr(g):
     """
     TODO: YP description
 
     **Positional Arguments:**
 
-    X:
-        - Input data matrix TODO: YP format
+    g:
+        - An r igraph object repr in python
     """
 
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
-            "dimselect.interface.R")
+            "ptr.interface.R")
     cmd = """
     source("%s")
-    fn <- function(X) {
-        dimselect.interface(X)
+    fn <- function(g) {
+        ptr.interface(g)
     }
     """ % path
 
-    return robjects.r(cmd)(X)
+    return robjects.r(cmd)(g._object)

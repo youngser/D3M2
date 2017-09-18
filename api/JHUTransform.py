@@ -4,14 +4,21 @@
 
 import sys, os
 from Transform import Transform
-from JHUGraph import JHUGraph
-from util import gen_graph_r
 import numpy as np
 
 sys.path.append(os.path.abspath("../"))
 
 from ase.SRC.ase import ase
 from lse.SRC.lse import lse
+from ptr.SRC.ptr import ptr
+from dimselect.SRC.dimselect import dimselect
+from sgm.SRC.sgm import sgm
+from gclust.SRC.gclust import gclust
+from oocase.SRC.oocase import oocase # FIXME: Expects a FlashGraph object
+from nonpar.SRC.nonpar import nonpar
+from sgc.SRC.sgc import sgc
+from numclust.SRC.numclust import numclust
+from vnsgm.SRC.vnsgm import vnsgm
 
 class JHUTransform(Transform):
 
@@ -19,30 +26,64 @@ class JHUTransform(Transform):
         """
         TODO: YP document
         """
-        return np.array(ase(g, dim)[0]) # TODO: YP do we need more?
+        return np.array(ase(g, dim))
 
     def lse_transform(self, g, dim=2):
         """
         TODO: YP document
         """
-        return np.array(ase(g, dim)[0]) # TODO: YP do we need more?
+        return np.array(ase(g, dim))
 
-def test():
-    gpath, rig = gen_graph_r(n=100, p=.2)
+    def ptr_transform(self, g):
+        """
+        TODO: YP document
+        """
+        return np.array(ptr(g))
 
-    g = JHUGraph()
-    g.read_graph(gpath)
+    def dimselect_transform(self, X):
+        """
+        TODO: YP document
+        """
+        return np.array(dimselect(X))
 
-    print("Summary: ")
-    g.summary()
-    t = JHUTransform()
+    def sgm_transform(self, g1, g2, numseeds):
+        """
+        TODO: YP document
+        """
+        return np.array(sgm(g1, g2, numseeds))
 
-    # ASE
-    ASE = t.ase_transform(g, 2)
-    print "ASE:", ASE, "\n\n"
+    def gclust_transform(self, X, dim=2):
+        """
+        TODO: YP document
+        """
+        return gclust(X, dim)[0]
 
-    # LSE
-    LSE = t.lse_transform(g, 2)
-    print "LSE:", ASE, "\n\n"
+    def oocase_transform(self, g, dim=2):
+        """
+        TODO: YP document
+        """
+        return oocase(g, dim)
 
-test()
+    def nonpar_transform(self, mat1, mat2, sigma=.5):
+        """
+        TODO: YP document
+        """
+        return nonpar(mat1, mat2, sigma)
+
+    def sgc_transform(self, g):
+        """
+        TODO: YP document
+        """
+        return np.array(sgc(g))
+
+    def numclust_transform(self, X):
+        """
+        TODO: YP document
+        """
+        return numclust(X)[0]
+
+    def vnsgm_transform(self, g, g2, voi, numseeds):
+        """
+        TODO: YP document
+        """
+        return np.array(vnsgm(g, g2, voi, numseeds))

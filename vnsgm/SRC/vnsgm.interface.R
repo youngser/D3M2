@@ -1,10 +1,10 @@
-if(!require(VN)) {
+if(!suppressMessages(require(VN))) {
     install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.0.tar.gz",type="source")
-    library(VN)
+    suppressMessages(library(VN))
 }
 if(!require(igraph)) {
     install.packages("igraph")
-    library(igraph)
+    suppressMessages(library(igraph))
 }
 
 vnsgm.interface <- function(g1, g2, voi, s)
@@ -33,7 +33,7 @@ vnsgm.interface <- function(g1, g2, voi, s)
     out <- vnsgm(voi,S,g1,g2,h,ell,R,gamma,sim=FALSE,plotF=FALSE)$P
 
     return(out)
-    
+
 #    cat("The output file is saved in '../DATA/out.txt'.\n")
 #    write.table(out,"../DATA/out.txt", row.names=F, col.names=F)
 }

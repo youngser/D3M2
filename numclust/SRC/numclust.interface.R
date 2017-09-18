@@ -1,8 +1,8 @@
-numclust.interface <- function(input)
+numclust.interface <- function(X)
 {
-    X <- scan(input)
     out <- which.max(X)
 
-    cat("The output file is saved in '../DATA/out.txt'.\n")
-    write(out,"../DATA/out.txt", ncol=1)
+    #cat("The output file is saved in '../DATA/out.txt'.\n")
+    #write(out,"../DATA/out.txt", ncol=1)
+    return(out)
 }
