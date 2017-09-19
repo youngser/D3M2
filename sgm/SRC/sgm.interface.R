@@ -7,7 +7,7 @@ if(!require(igraph)) {
     suppressMessages(library(igraph))
 }
 
-sgm.interface <- function(g1, g2, s)
+sgm.interface <- function(g1, g2, S)
 {
     ## X <- as.matrix(read.table(input1))
     ## if (ncol(X)==2) {
@@ -30,10 +30,14 @@ sgm.interface <- function(g1, g2, s)
 
     gamma <- 1
     niter <- 30
+    s <- nrow(S)
+    if(is.null(s)){
+        s <- 0
+    }
     M <- rsp(n-s,gamma)
-    S <- diag(n);
-    S[(s+1):n,(s+1):n] <- M
-    out <- sgm(A2, A1, 0, start=S, pad=0, iteration=niter)$P
+    bcs <- diag(n);
+    bcs[(s+1):n,(s+1):n] <- M
+    out <- sgm(A2, A1, start=bcs, NULL, pad=0, iteration=niter)$P
 
     return(out)
 #    cat("The output file is saved in '../DATA/out.txt'.\n")
