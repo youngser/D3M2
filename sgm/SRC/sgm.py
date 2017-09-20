@@ -6,7 +6,7 @@
 import os
 import rpy2.robjects as robjects
 
-def sgm(g1, g2, seeds):
+def sgm(g1, g2, seeds = 0):
     """
     TODO: YP description
 
@@ -36,4 +36,4 @@ def sgm(g1, g2, seeds):
     }
     """ % path
 
-    return robjects.r(cmd)(g1._object, g2._object, seeds)
+    return robjects.r(cmd)(g1, g2, seeds)

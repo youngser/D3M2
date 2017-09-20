@@ -1,5 +1,5 @@
 if(!require(VN)) {
-    install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.0.tar.gz",type="source")
+    install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.1.tar.gz",type="source")
     suppressMessages(library(VN))
 }
 if(!require(igraph)) {
@@ -33,11 +33,12 @@ sgm.interface <- function(g1, g2, S)
     s <- nrow(S)
     if(is.null(s)){
         s <- 0
+        S <- NULL
+    }else{
+        S <- S[,c(2,1)]
     }
-    M <- rsp(n-s,gamma)
-    bcs <- diag(n);
-    bcs[(s+1):n,(s+1):n] <- M
-    out <- sgm(A2, A1, start=bcs, NULL, pad=0, iteration=niter)$P
+
+    out <- sgm(A2, A1, hard=FALSE, S, iteration=niter)$P
 
     return(out)
 #    cat("The output file is saved in '../DATA/out.txt'.\n")
