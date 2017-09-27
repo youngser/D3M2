@@ -25,7 +25,8 @@ RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; 
 RUN set -ex \
     && Rscript -e 'install.packages(c("devtools","mclust","popbio","clue", "igraph"), dependencies = c("Depends", "Imports"))' \
     && Rscript -e 'devtools::install_github("youngser/gmmase")' \
-    && Rscript -e 'install.packages("http://www.cis.jhu.edu/~parky/D3M/VN_0.3.0.tar.gz",type="source", dependencies = c("Depends", "Imports"))'
+    && Rscript -e 'devtools::install_github("youngser/VN")'
+
 
 # copy required files/primitives
 # COPY . $HOME

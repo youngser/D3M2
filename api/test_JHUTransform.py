@@ -22,7 +22,7 @@ def test():
 
     # LSE
     LSE = t.lse_transform(g, 4)
-    print("LSE: ", ASE, "\n\n")
+    print("LSE: ", LSE, "\n\n")
 
     # PTR
     PTR = t.ptr_transform(g)

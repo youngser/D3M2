@@ -6,16 +6,16 @@ if (length(args)<3) {
 } else if (length(args)==3) {
     input1 <- args[1]
     input2 <- args[2]
-    voi <- arg[3]
+    voi <- args[3]
     s <- 0
 } else {
     input1 <- args[1]
     input2 <- args[2]
-    voi <- arg[3]
+    voi <- args[3]
     s <- args[4]
 }
 
 
 cat("working with ", input1, ",", input2, "\n")
 
-vnsgm.interface(input1, input2, s)
+vnsgm.interface(input1, input2, voi, s)
